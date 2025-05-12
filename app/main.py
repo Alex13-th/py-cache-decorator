@@ -2,15 +2,15 @@ from typing import Callable, Any
 
 
 def cache(func: Callable) -> Callable:
-    cashed_result = {}
+    cached_result = {}
 
     def cache_wrapper(*args) -> Any:
-        if args in cashed_result:
+        if args in cached_result:
             print("Getting from cache")
-            return cashed_result[args]
+            return cached_result[args]
         else:
             print("Calculating new result")
             result = func(*args)
-            cashed_result[args] = result
+            cached_result[args] = result
             return result
     return cache_wrapper
